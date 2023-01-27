@@ -1,15 +1,19 @@
-import { useSelector } from "react-redux"
-import TaskForm from "./components/TaskForm";
-import TasksList from "./components/TasksList";
+import {useSelector} from 'react-redux'
+import TaskForm from './components/TaskForm'
+import TasksList from './components/TasksList'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
-  const tasksState = useSelector(state => state.tasks);
+  const tasksState = useSelector(state => state.tasks)
   console.log(tasksState)
   return (
     <div>
-      <h1>Redux Toolkit</h1>
-      <TasksList />
-      <TaskForm/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TasksList/>} />
+          <Route path="/create" element={<TaskForm />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
